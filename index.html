@@ -1,278 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Birthday</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Pacifico&family=Lobster&display=swap"
-      rel="stylesheet"
-    />
+    <title>Happy Birthday, My Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Pacifico&family=Lobster&display=swap" rel="stylesheet" />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        height: 100vh;
-        overflow: hidden;
-        background: linear-gradient(
-          135deg,
-          #ff2a6d,
-          #ffd700,
-          #ff9e1f,
-          #1fbbff,
-          #ff3d8c
-        );
-        background-size: 400% 400%;
-        animation: gradientBG 12s ease infinite;
-        font-family: "Arial", sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-      }
-      .stars {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 0;
-      }
-      .star {
-        position: absolute;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23FFDF00' d='M12 0L14.91 7.09L22 9.9L14.91 12.91L12 20L9.09 12.91L2 9.9L9.09 7.09z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        width: 20px;
-        height: 20px;
-        animation: twinkle 2s infinite;
-      }
-      .welcome-card {
-        background: rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(10px);
-        border: 3px solid rgba(255, 215, 0, 0.6);
-        box-shadow: 0 8px 32px rgba(255, 105, 0, 0.4),
-          0 0 20px rgba(255, 215, 0, 0.5);
-        border-radius: 30px;
-        padding: 50px;
-        text-align: center;
-        max-width: 90%;
-        width: 550px;
-        position: relative;
-        z-index: 10;
-        transition: all 0.7s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-        overflow: hidden;
-      }
-      .welcome-card:before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.2) 0%,
-          rgba(255, 215, 0, 0.1) 40%,
-          rgba(255, 255, 255, 0) 70%
-        );
-        animation: shimmer 6s linear infinite;
-        pointer-events: none;
-        z-index: -1;
-      }
-      h1 {
-        font-family: "Lobster", cursive;
-        color: #ff0051;
-        font-size: 3.5rem;
-        margin-bottom: 25px;
-        text-shadow: 3px 3px 0px rgba(255, 215, 0, 0.5),
-          6px 6px 15px rgba(0, 0, 0, 0.2);
-        animation: bounce 2s ease infinite alternate;
-      }
-      p {
-        font-family: "Dancing Script", cursive;
-        color: #7209b7;
-        font-size: 1.6rem;
-        line-height: 1.6;
-        margin-bottom: 30px;
-        text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
-      }
-      .heart-button-container {
-        position: relative;
-        margin: 20px auto 10px;
-        width: 130px;
-        height: 130px;
-        perspective: 500px;
-      }
-      .heart-button {
-        position: relative;
-        width: 100px;
-        height: 90px;
-        margin: 0 auto;
-        cursor: pointer;
-        transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        transform-style: preserve-3d;
-        animation: heartBeat 2s infinite alternate;
-      }
-      .heart-button:before,
-      .heart-button:after {
-        position: absolute;
-        content: "";
-        left: 50px;
-        top: 0;
-        width: 50px;
-        height: 80px;
-        background: #ff0051;
-        border-radius: 50px 50px 0 0;
-        transform: rotate(-45deg);
-        transform-origin: 0 100%;
-        box-shadow: 0 0 25px rgba(255, 0, 81, 0.8),
-          inset -5px -5px 15px rgba(0, 0, 0, 0.2);
-      }
-      .heart-button:after {
-        left: 0;
-        transform: rotate(45deg);
-        transform-origin: 100% 100%;
-      }
-      .heart-button:hover {
-        transform: scale(1.15) translateY(-10px) rotateY(10deg);
-      }
-      .heart-button-text {
-        position: relative;
-        z-index: 5;
-        font-family: "Pacifico", cursive;
-        color: white;
-        font-size: 1.4rem;
-        top: 30px;
-        text-align: center;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      }
-      .next-button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        background-color: #ff0051;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1.2rem;
-        transition: background-color 0.3s, transform 0.3s;
-      }
-      .next-button:hover {
-        background-color: #e6004d;
-        transform: scale(1.1);
-      }
-      @keyframes gradientBG {
-        0% {
-          background-position: 0% 50%;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh; overflow: hidden;
+            background: linear-gradient(135deg, #ff2a6d, #ffd700, #ff9e1f, #1fbbff, #ff3d8c);
+            background-size: 400% 400%; animation: gradientBG 12s ease infinite;
+            font-family: "Arial", sans-serif; display: flex; justify-content: center; align-items: center; position: relative;
         }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-      @keyframes twinkle {
-        0% {
-          opacity: 0.3;
-          transform: scale(0.8);
-        }
-        50% {
-          opacity: 1;
-          transform: scale(1.2);
-        }
-        100% {
-          opacity: 0.3;
-          transform: scale(0.8);
-        }
-      }
-      @media (max-width: 768px) {
-        h1 {
-          font-size: 2.8rem;
-        }
-        p {
-          font-size: 1.3rem;
+        .stars { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; }
+        .star {
+            position: absolute; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23FFDF00' d='M12 0L14.91 7.09L22 9.9L14.91 12.91L12 20L9.09 12.91L2 9.9L9.09 7.09z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; width: 20px; height: 20px; animation: twinkle 2s infinite;
         }
         .welcome-card {
-          padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 215, 0, 0.6); box-shadow: 0 8px 32px rgba(255, 105, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.5);
+            border-radius: 30px; padding: 50px; text-align: center; max-width: 90%; width: 550px; position: relative; z-index: 10;
+            transition: all 0.7s cubic-bezier(0.68, -0.6, 0.32, 1.6); overflow: hidden;
         }
-      }
-      @media (max-width: 480px) {
+        .welcome-card:before {
+            content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 215, 0, 0.1) 40%, rgba(255, 255, 255, 0) 70%);
+            animation: shimmer 6s linear infinite; pointer-events: none; z-index: -1;
+        }
         h1 {
-          font-size: 2.4rem;
+            font-family: "Lobster", cursive; color: #ff0051; font-size: 3.5rem; margin-bottom: 25px;
+            text-shadow: 3px 3px 0px rgba(255, 215, 0, 0.5), 6px 6px 15px rgba(0, 0, 0, 0.2);
+            animation: bounce 2s ease infinite alternate;
         }
         p {
-          font-size: 1.1rem;
+            font-family: "Dancing Script", cursive; color: #7209b7; font-size: 1.6rem; line-height: 1.6; margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
         }
-        .welcome-card {
-          padding: 30px 20px;
+        .next-button {
+            margin-top: 20px; padding: 10px 20px; background-color: #ff0051; color: white; border: none; border-radius: 5px; cursor: pointer;
+            font-size: 1.2rem; transition: background-color 0.3s, transform 0.3s;
         }
-        .heart-button-container {
-          width: 110px;
-          height: 110px;
+        .next-button:hover {
+            background-color: #e6004d; 
+            transform: scale(1.1);
         }
-        .heart-button {
-          width: 80px;
-          height: 70px;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .heart-button-text {
-          font-size: 1.1rem;
-          top: 22px;
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.3; transform: scale(0.8); }
         }
-      }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            p { font-size: 1.3rem; }
+            .welcome-card { padding: 40px 30px; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 2.4rem; }
+            p { font-size: 1.1rem; }
+            .welcome-card { padding: 30px 20px; }
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="stars" id="stars"></div>
     <div class="welcome-card" id="welcomeCard">
-      <div class="ribbon"><span class="ribbon-content">Special Day!</span></div>
-      <h1>Happy Birthday, Sudeshna 🎉</h1>
-      <p>
-        Today is all about you — the light of my life. I've prepared a little
-        journey filled with surprises just for you. Let's begin…
-      </p>
-      <div class="heart-button-container">
-        <a href="./memory.html" class="heart-button" id="startButton">
-          <div class="heart-button-text">Begin</div>
-        </a>
-      </div>
-      <button class="next-button" id="nextButton">Next</button>
+        <div class="ribbon"><span class="ribbon-content">Special Day!</span></div>
+        <h1>Happy Birthday, Sudeshna 🎉</h1>
+        <p>Today is all about you — the light of my life. I've prepared a little journey filled with surprises just for you. Let's begin…</p>
+        <button class="next-button" id="nextButton">Next</button>
     </div>
     <audio id="bgMusic" loop>
-      <source src="./happy-birthday-368842.mp3" type="audio/mpeg" />
+        <source src="./happy-birthday-368842.mp3" type="audio/mpeg" />
     </audio>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const bgMusic = document.getElementById("bgMusic");
-        const startButton = document.getElementById("startButton");
-        const nextButton = document.getElementById("nextButton");
-        bgMusic.volume = 0.4;
-        bgMusic.play().catch(() => {
-          /* Handle autoplay prevention */
+        document.addEventListener("DOMContentLoaded", function () {
+            const bgMusic = document.getElementById("bgMusic");
+            const nextButton = document.getElementById("nextButton");
+            bgMusic.volume = 0.4;
+            bgMusic.play().catch(() => { /* Handle autoplay prevention */ });
+
+            nextButton.addEventListener("click", function () {
+                window.location.href = "memory.html"; // Navigate to memory.html
+            });
+
+            for (let i = 0; i < 150; i++) createStar(document.getElementById("stars"));
         });
 
-        startButton.addEventListener("click", function () {
-          window.location.href = "memory.html";
-        });
-
-        nextButton.addEventListener("click", function () {
-          window.location.href = "memory.html"; // Navigate to memory.html
-        });
-
-        for (let i = 0; i < 150; i++)
-          createStar(document.getElementById("stars"));
-      });
-
-      function createStar(container) {
-        const star = document.createElement("div");
-        star.classList.add("star");
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        container.appendChild(star);
-      }
+        function createStar(container) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            container.appendChild(star);
+        }
     </script>
-  </body>
+</body>
 </html>
